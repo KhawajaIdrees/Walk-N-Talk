@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Walk 'N' Talk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+   
+<!-- BANNER (Your Original Banner) -->
+<div class="banner">
+  <div class="banner-content">
+    <p id="banner-text">Comfort Meets Fashion - Shop the New Arrivals!</p>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <ul class="nav-left">
+    <li><a href="home.html" class="sale">Home</a></li>
+    <li><a href="#men" class="men">Men</a></li>
+    <li><a href="#women" class="women">Women</a></li>
+    <li><a href="#kids" class="kids">Kids</a></li>
+   
+  </ul>
+  <div class="logo">
+    <a href="home.html"><img src="ecomlogo.png" alt="Logo"></a>
+  </div>
+  <ul class="nav-right">
+    <li>
+      <form action="/search" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Search products...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </li>
+    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    <li><a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+  </ul>
+</nav>
+<section id="contact-form">
+  <h2>Contact Us</h2>
+  <h3>Get in Touch With Us</h3>
+  
+  <form action="#" method="POST">
+      <div class="form-group">
+          <div class="input-box">
+              <label for="first-name">First Name *</label>
+              <input type="text" id="first-name" name="first-name" placeholder="First name here" required>
+          </div>
+          <div class="input-box">
+              <label for="last-name">Last Name *</label>
+              <input type="text" id="last-name" name="last-name" placeholder="Last name here" required>
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="input-box">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="Add email" required>
+          </div>
+          <div class="input-box">
+              <label for="subject">Subject *</label>
+              <input type="text" id="subject" name="subject" placeholder="How can we help you?" required>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="comments">Comments / Questions *</label>
+          <textarea id="comments" name="comments" rows="4" placeholder="Comments" required></textarea>
+      </div>
+      <button class="alo" type="submit">Get in Touch</button>
+  </form>
+</section>
+
+
+<!-- footer -->
+<footer>
+  <div class="footer-section">
+    <div class="foo">
+      <img src="ecomlogo.png" alt="">
+    </div>
+    <ul class="social-media">
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+      <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      
+  </ul>
+  </div>
+  <div class="footer-section">
+      <h3>MENU</h3>
+      <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="about.html">About Us</a></li>
+         
+  </div>
+  <div class="footer-section">
+      <h3>COMPANY</h3>
+      <ul>
+          <li><a href="#">Our Stores</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Our Materials</a></li>
+         
+      </ul>
+  </div>
+     <div class="mail">
+      <p>📧 <a href="mailto:khwajaidrees22@gmail.com">khwajaidrees22@gmail.com</a></p>
+     </div>
+    </div>
+</footer>
+<p class="rights">&copy; <span id="year"></span> Walk 'n' Talk. All Rights Reserved.</p>
+</body>
+</html>
