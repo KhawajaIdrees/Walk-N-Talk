@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop our full catalogue of premium footwear for men, women, and kids. Filter by category, sort by price, and find your perfect pair.">
+    <meta name="theme-color" content="#333333">
+    <title>Catalogue — Walk 'N' Talk | Shop All Footwear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="catalogue.css">
+</head>
+<body>
+    <!-- BANNER -->
+    <div class="banner" role="banner">
+        <div class="banner-content">
+            <p id="banner-text">Comfort Meets Fashion - Shop the New Arrivals!</p>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" aria-label="Main navigation">
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="nav-left nav-items" id="nav-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogue.html" class="active">Catalogue</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="logo">
+            <a href="index.html" aria-label="Walk 'N' Talk home">
+                <img src="ecomlogo.png" alt="Walk 'N' Talk Logo" loading="eager">
+            </a>
+        </div>
+        <ul class="nav-right nav-items">
+            <li>
+                <form action="catalogue.html" method="GET" class="search-form" role="search">
+                    <input type="text" name="query" placeholder="Search products..." aria-label="Search products">
+                    <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+                </form>
+            </li>
+            <li><a href="account.html"><i class="fas fa-user"></i> Account</a></li>
+            <li>
+                <a href="#" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CATALOGUE MAIN SECTION -->
+    <main class="catalogue-container">
+        <div class="catalogue-header">
+            <h1>Our Collection</h1>
+            <p>Discover the perfect blend of comfort and style.</p>
+        </div>
+
+        <div class="catalogue-controls">
+            <div class="filter-group">
+                <label for="category-filter">Filter by Category:</label>
+                <select id="category-filter" aria-label="Filter by category">
+                    <option value="all">All</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="kids">Kids</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sort-filter">Sort by:</label>
+                <select id="sort-filter" aria-label="Sort products">
+                    <option value="default">Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name (A-Z)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="search-inline">Search:</label>
+                <input type="text" id="search-inline" placeholder="Type to search..." aria-label="Search products inline">
+            </div>
+        </div>
+
+        <div class="catalogue-results-info" id="results-info">
+            <!-- "Showing X products" injected by JS -->
+        </div>
+
+        <div class="catalogue-grid" id="catalogue-grid">
+            <!-- Product Cards injected by JS -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-section">
+            <div class="foo">
+                <img src="ecomlogo.png" alt="Walk 'N' Talk" loading="lazy">
+            </div>
+            <ul class="social-media">
+                <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></li>
+                <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>MENU</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>COMPANY</h3>
+            <ul>
+                <li><a href="#">Our Stores</a></li>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Our Materials</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        <div class="mail">
+            <p>📧 <a href="mailto:khwajaidrees22@gmail.com">khwajaidrees22@gmail.com</a></p>
+        </div>
+    </footer>
+    <p class="rights">&copy; <span id="year"></span> Walk 'n' Talk. All Rights Reserved.</p>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

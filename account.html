@@ -3,123 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Account - Walk 'N' Talk</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="account.css">
-  <body>
-
-<!-- BANNER (Your Original Banner) -->
-<div class="banner">
-    <div class="banner-content">
-      <p id="banner-text">Comfort Meets Fashion - Shop the New Arrivals!</p>
-    </div>
-  </div>
- 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <ul class="nav-left">
-      <li><a href="#men" class="men">Men</a></li>
-      <li><a href="#women" class="women">Women</a></li>
-      <li><a href="#kids" class="kids">Kids</a></li>
-      <li><a href="#sale" class="sale">Sale</a></li>
-    </ul>
-    <div class="logo">
-      <a href=""><img src="ecomlogo.png" alt="Logo"></a>
-    </div>
-    <ul class="nav-right">
-      <li>
-        <form action="/search" method="GET" class="search-form">
-          <input type="text" name="query" placeholder="Search products...">
-          <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
-      </li>
-      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-      <li><a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-    </ul>
-  </nav>
-
-  <div class="auth-container">
-    <div class="login-section-auth">
-        <h2 class="auth-heading">LOGIN</h2>
-        <form action="#" method="POST">
-            <label class="auth-label" for="email">Email</label>
-            <input class="auth-input" type="email" id="email" name="email" required>
-            
-            <label class="auth-label" for="password">Password</label>
-            <input class="auth-input" type="password" id="password" name="password" required>
-            
-            <button class="auth-button" type="submit">Sign In</button>
-            
-            <a class="auth-link" href="#">Forgot Password</a>
-        </form>
+</head>
+<body>
+    <!-- BANNER -->
+    <div class="banner">
+        <div class="banner-content">
+            <p id="banner-text">Comfort Meets Fashion - Shop the New Arrivals!</p>
+        </div>
     </div>
 
-    <div class="register-section-auth">
-        <h2 class="auth-heading">CREATE AN ACCOUNT</h2>
-        
-        <form action="#" method="POST">
-            <label class="auth-label" for="firstName">First Name</label>
-            <input class="auth-input" type="text" id="firstName" name="firstName" required>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-left nav-items" id="nav-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogue.html">Catalogue</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="logo">
+            <a href="index.html"><img src="ecomlogo.png" alt="Walk 'N' Talk Logo"></a>
+        </div>
+        <ul class="nav-right nav-items">
+            <li>
+                <form action="catalogue.html" method="GET" class="search-form">
+                    <input type="text" name="query" placeholder="Search products...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </li>
+            <li><a href="account.html" class="active"><i class="fas fa-user"></i> Account</a></li>
+            <li><a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+    </nav>
 
-            <label class="auth-label" for="lastName">Last Name</label>
-            <input class="auth-input" type="text" id="lastName" name="lastName" required>
+    <!-- AUTH CONTAINER -->
+    <div class="auth-container">
+        <div class="login-section-auth">
+            <h2 class="auth-heading">LOGIN</h2>
+            <form action="#" method="POST">
+                <label class="auth-label" for="email">Email</label>
+                <input class="auth-input" type="email" id="email" name="email" required>
+                
+                <label class="auth-label" for="password">Password</label>
+                <input class="auth-input" type="password" id="password" name="password" required>
+                
+                <button class="auth-button" type="submit">Sign In</button>
+                
+                <a class="auth-link" href="#">Forgot Password?</a>
+            </form>
+        </div>
 
-            <label class="auth-label" for="emailRegister">Email</label>
-            <input class="auth-input" type="email" id="emailRegister" name="emailRegister" required>
+        <div class="register-section-auth">
+            <h2 class="auth-heading">CREATE AN ACCOUNT</h2>
+            <form action="#" method="POST">
+                <label class="auth-label" for="firstName">First Name</label>
+                <input class="auth-input" type="text" id="firstName" name="firstName" required>
 
-            <label class="auth-label" for="passwordRegister">Password</label>
-            <input class="auth-input" type="password" id="passwordRegister" name="passwordRegister" required>
+                <label class="auth-label" for="lastName">Last Name</label>
+                <input class="auth-input" type="text" id="lastName" name="lastName" required>
 
-            <label class="auth-label" for="confirmPassword">Confirm Password</label>
-            <input class="auth-input" type="password" id="confirmPassword" name="confirmPassword" required>
+                <label class="auth-label" for="emailRegister">Email</label>
+                <input class="auth-input" type="email" id="emailRegister" name="emailRegister" required>
 
-            <div class="auth-checkbox">
-                <input type="checkbox" id="offers" name="offers">
-                <label for="offers">Email me with news and offers</label>
+                <label class="auth-label" for="passwordRegister">Password</label>
+                <input class="auth-input" type="password" id="passwordRegister" name="passwordRegister" required>
+
+                <label class="auth-label" for="confirmPassword">Confirm Password</label>
+                <input class="auth-input" type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <div class="auth-checkbox">
+                    <input type="checkbox" id="offers" name="offers">
+                    <label for="offers">Email me with news and offers</label>
+                </div>
+
+                <button class="auth-button" type="submit">Register</button>
+            </form>
+            <p class="auth-paragraph">By creating an account, you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-section">
+            <div class="foo">
+                <img src="ecomlogo.png" alt="Walk 'N' Talk">
             </div>
+            <ul class="social-media">
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>MENU</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>COMPANY</h3>
+            <ul>
+                <li><a href="#">Our Stores</a></li>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Our Materials</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        <div class="mail">
+            <p>📧 <a href="mailto:khwajaidrees22@gmail.com">khwajaidrees22@gmail.com</a></p>
+        </div>
+    </footer>
+    <p class="rights">&copy; <span id="year"></span> Walk 'n' Talk. All Rights Reserved.</p>
 
-            <button class="auth-button" type="submit">Register</button>
-        </form>
-
-        <p class="auth-paragraph">By creating an account, you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
-    </div>
-</div>
- <!-- footer -->
- <footer>
-  <div class="footer-section">
-    <div class="foo">
-      <img src="ecomlogo.png" alt="">
-    </div>
-    <ul class="social-media">
-      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-      <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
-      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-      
-  </ul>
-  </div>
-  <div class="footer-section">
-      <h3>MENU</h3>
-      <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="">Services</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="about.html">About Us</a></li>
-         
-  </div>
-  <div class="footer-section">
-      <h3>COMPANY</h3>
-      <ul>
-          <li><a href="#">Our Stores</a></li>
-          <li><a href="#">Our Story</a></li>
-          <li><a href="#">Our Materials</a></li>
-         
-      </ul>
-  </div>
-     <div class="mail">
-      <p>📧 <a href="mailto:khwajaidrees22@gmail.com">khwajaidrees22@gmail.com</a></p>
-     </div>
-    </div>
-</footer>
-<p class="rights">&copy; <span id="year"></span> Walk 'n' Talk. All Rights Reserved.</p>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
