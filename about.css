@@ -6,11 +6,12 @@
 #about-us {
     background-color: #f9f9f9;
     padding-bottom: 3rem;
+    min-height: 60vh;
 }
 
 /* --- About Heading --- */
 .about {
-    padding: 3rem 1rem;
+    padding: 3rem 1rem 1rem;
     text-align: center;
     font-family: "Poppins", sans-serif;
     color: #000;
@@ -101,7 +102,7 @@
     border-radius: 10px;
     overflow: hidden;
     padding: 2rem;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .journey-overlay {
@@ -115,7 +116,7 @@
 }
 
 .journey-background:hover .journey-overlay {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .journey-overlay p {
@@ -190,7 +191,7 @@
    ============================================ */
 @media (max-width: 768px) {
     .about {
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 0.5rem;
         font-size: 1.8rem;
     }
 
@@ -250,7 +251,7 @@
    ============================================ */
 @media (max-width: 480px) {
     .about {
-        padding: 1.5rem 0.8rem;
+        padding: 1.5rem 0.8rem 0.5rem;
         font-size: 1.5rem;
     }
 
