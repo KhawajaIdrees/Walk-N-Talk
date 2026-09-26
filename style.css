@@ -1,6 +1,6 @@
 /* ============================================
    WALK 'N' TALK - MAIN STYLESHEET
-   FULL FIXED - Hamburger menu + responsive
+   Version 4.0 - Unified Hamburger Menu
    ============================================ */
 
 /* --- Google Fonts --- */
@@ -98,7 +98,7 @@ button {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-family: "Josefin Sans", sans-serif;
     height: 70px;
-    position: sticky;   /* FIX: sticky navbar */
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -227,7 +227,7 @@ button {
 }
 
 /* ============================================
-   HAMBURGER MENU TOGGLE — FIX
+   HAMBURGER MENU TOGGLE
    ============================================ */
 .menu-toggle {
     display: none;
@@ -260,7 +260,6 @@ button {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Animate to X when open */
 .menu-toggle.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -1309,52 +1308,80 @@ footer {
 }
 
 /* ============================================
-   RESPONSIVE — MOBILE (max-width: 768px) — FIX
+   RESPONSIVE — MOBILE (max-width: 768px)
+   UNIFIED HAMBURGER MENU
    ============================================ */
 @media (max-width: 768px) {
-    /* Navbar becomes mobile */
+
+    /* ---------- NAVBAR ---------- */
     .navbar {
         padding: 0 1rem;
         height: 60px;
         justify-content: space-between;
+        flex-wrap: nowrap;
     }
 
-    /* SHOW hamburger */
+    /* Hamburger button on the LEFT */
     .menu-toggle {
         display: flex;
+        order: 1;
+        flex-shrink: 0;
     }
 
-    /* Convert nav lists to fullscreen overlay */
+    /* Logo centered */
+    .logo {
+        position: static;
+        transform: none;
+        order: 2;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin: 0 0.5rem;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    /* ---------- UNIFIED MOBILE MENU OVERLAY ---------- */
+    /* Both nav-left and nav-right become one full-screen menu */
     .nav-left,
     .nav-right {
         position: fixed;
-        top: 0;
+        top: 60px;
         left: 0;
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 60px);
         background-color: #fff;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-        transform: translateX(-100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        padding: 2rem;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
+        padding: 1rem 0 3rem;
         overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 998;
         visibility: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        margin: 0;
     }
 
-    /* Left nav slides in from left */
+    /* When active, slide in */
     .nav-left.active {
         transform: translateX(0);
         visibility: visible;
+        z-index: 999;
     }
 
-    /* Right nav slides in from right */
+    /* Right nav sits directly below left nav */
     .nav-right {
-        transform: translateX(100%);
-        z-index: 1001;
+        top: auto;
+        position: fixed;
+        height: auto;
+        max-height: calc(100vh - 60px);
+        padding-top: 0;
+        transform: translateX(-100%);
     }
 
     .nav-right.active {
@@ -1362,36 +1389,81 @@ footer {
         visibility: visible;
     }
 
+    /* Stack the two menus vertically (as one list) */
+    .nav-left.active + .nav-right {
+        /* This handles the case where both are siblings and active */
+    }
+
+    /* ---------- MENU ITEMS ---------- */
+    .nav-left li,
+    .nav-right li {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-left li:last-child,
+    .nav-right li:last-child {
+        border-bottom: none;
+    }
+
     .nav-left li a,
     .nav-right li a {
-        font-size: 1.4rem;
-        padding: 0.8rem 1.2rem;
+        font-size: 1.15rem;
+        padding: 1rem 1.5rem;
         width: 100%;
-        justify-content: center;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.7rem;
+        color: #333;
+        text-align: left;
+    }
+
+    .nav-left li a::after,
+    .nav-right li a::after {
+        display: none;
+    }
+
+    .nav-left li a.active,
+    .nav-right li a.active {
+        color: #007bff;
+        background-color: #f5faff;
+        font-weight: 600;
+    }
+
+    .nav-right li a i {
+        width: 20px;
         text-align: center;
     }
 
-    /* Logo stays visible above overlay */
-    .logo {
-        position: static;
-        transform: none;
-        z-index: 1102;
+    /* ---------- SEARCH INSIDE MENU ---------- */
+    .nav-right li:first-child {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #f0f0f0;
     }
 
-    .logo img { height: 35px; }
-
-    /* Search inside mobile menu */
     .search-form {
-        width: 90%;
-        max-width: 340px;
+        width: 100%;
+        max-width: 100%;
         flex-direction: row;
     }
 
     .search-form input {
         width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        border-radius: 8px;
     }
 
-    /* Slider */
+    .search-form button {
+        padding: 0.8rem 1rem;
+        font-size: 1.1rem;
+        background: #f5f5f5;
+        border-radius: 8px;
+        margin-left: 0.5rem;
+    }
+
+    /* ---------- SLIDER ---------- */
     .slider-banner {
         height: 50vh;
         min-height: 300px;
@@ -1401,7 +1473,7 @@ footer {
     #slider-text { font-size: 1.5rem; }
     .slider-cta { padding: 0.6rem 1.4rem; font-size: 0.85rem; }
 
-    /* Product grid */
+    /* ---------- PRODUCT GRID ---------- */
     .product-grid {
         flex-direction: column;
         align-items: center;
@@ -1416,21 +1488,22 @@ footer {
 
     .image-container { height: 350px; }
 
-    /* Secondary navbar */
-    .secondary-navbar ul { gap: 1rem; }
+    /* ---------- SECONDARY NAVBAR ---------- */
+    .secondary-navbar ul { gap: 0.8rem; }
+    .secondary-navbar ul li a { font-size: 0.8rem; }
 
-    /* Trust strip */
+    /* ---------- TRUST STRIP ---------- */
     .trust-strip { padding: 1.5rem 1rem; gap: 0.5rem; }
     .trust-item { flex: 1 1 45%; padding: 0.5rem; }
     .trust-item i { font-size: 1.6rem; }
     .trust-item h4 { font-size: 0.9rem; }
     .trust-item p { font-size: 0.78rem; }
 
-    /* Carousel */
+    /* ---------- CAROUSEL ---------- */
     .idrees-slide { flex: 0 0 50%; padding: 0.8rem; }
     .idrees-slide img { height: 180px; }
 
-    /* Sections */
+    /* ---------- SECTIONS ---------- */
     .section-title { font-size: 1.5rem; }
     .section-subtitle { font-size: 0.9rem; margin-bottom: 1.8rem; }
 
@@ -1455,7 +1528,7 @@ footer {
     }
     .newsletter-icon { font-size: 2.2rem; }
 
-    /* Footer */
+    /* ---------- FOOTER ---------- */
     footer {
         flex-direction: column;
         align-items: center;
@@ -1467,7 +1540,7 @@ footer {
     .mail { padding: 0.5rem; }
     .rights { padding: 1rem 0.5rem; font-size: 0.8rem; }
 
-    /* Toast */
+    /* ---------- TOAST ---------- */
     .toast-container {
         bottom: 1rem;
         right: 1rem;
@@ -1488,10 +1561,13 @@ footer {
     }
 
     .navbar { padding: 0 0.8rem; height: 55px; }
-    .logo img { height: 30px; }
+    .logo img { height: 28px; }
 
     .menu-toggle { width: 38px; height: 38px; }
     .menu-toggle .bar { width: 22px; }
+
+    .nav-left li a,
+    .nav-right li a { font-size: 1.05rem; padding: 0.9rem 1.2rem; }
 
     .idrees-slide { flex: 0 0 100%; }
     .idrees-slide img { height: 180px; }

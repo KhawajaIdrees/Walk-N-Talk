@@ -1,6 +1,6 @@
 /* ============================================
    WALK 'N' TALK - MAIN JAVASCRIPT FILE
-   Version 3.0 - Full Fixed (Hamburger + All)
+   Version 4.0 - Unified Hamburger Menu
    ============================================ */
 
 (function () {
@@ -52,7 +52,7 @@
     const TOTAL_IDREES_GROUPS = 2;
 
     /* ============================================
-       3. TOAST NOTIFICATION SYSTEM
+       3. TOAST NOTIFICATIONS
        ============================================ */
     function showToast(message, type = 'info', duration = 3000) {
         let container = document.getElementById('toast-container');
@@ -94,7 +94,7 @@
     }
 
     /* ============================================
-       5. HERO SLIDER ROTATION
+       5. HERO SLIDER
        ============================================ */
     function changeSliderContent() {
         const sliderImage = document.getElementById('slider-image');
@@ -144,7 +144,7 @@
     }
 
     /* ============================================
-       7. MOBILE MENU — FULL FIX
+       7. MOBILE MENU - UNIFIED
        ============================================ */
     function setupMobileMenu() {
         const mobileMenu = document.getElementById('mobile-menu');
@@ -152,73 +152,60 @@
         const navRight = document.querySelector('.nav-right');
 
         if (!mobileMenu) {
-            console.warn('⚠️ menu-toggle button not found in DOM');
+            console.warn('⚠️ Hamburger button not found');
             return;
         }
 
-        // Remove any existing listeners by cloning (safety)
-        const newBtn = mobileMenu.cloneNode(true);
-        mobileMenu.parentNode.replaceChild(newBtn, mobileMenu);
+        const openMenu = () => {
+            mobileMenu.classList.add('active');
+            mobileMenu.setAttribute('aria-expanded', 'true');
+            if (navLeft) navLeft.classList.add('active');
+            if (navRight) navRight.classList.add('active');
+            document.body.classList.add('no-scroll');
+        };
 
-        newBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
+        const closeMenu = () => {
+            mobileMenu.classList.remove('active');
+            mobileMenu.setAttribute('aria-expanded', 'false');
+            if (navLeft) navLeft.classList.remove('active');
+            if (navRight) navRight.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        };
 
-            const isCurrentlyOpen = newBtn.classList.contains('active');
-
-            if (isCurrentlyOpen) {
+        const toggleMenu = (e) => {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            if (mobileMenu.classList.contains('active')) {
                 closeMenu();
             } else {
                 openMenu();
             }
-        });
+        };
 
-        function openMenu() {
-            newBtn.classList.add('active');
-            newBtn.setAttribute('aria-expanded', 'true');
-            if (navLeft) navLeft.classList.add('active');
-            if (navRight) navRight.classList.add('active');
-            document.body.classList.add('no-scroll');
-        }
+        mobileMenu.addEventListener('click', toggleMenu);
 
-        function closeMenu() {
-            newBtn.classList.remove('active');
-            newBtn.setAttribute('aria-expanded', 'false');
-            if (navLeft) navLeft.classList.remove('active');
-            if (navRight) navRight.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-
-        // Close on any link click inside nav
+        // Close on any nav link click
         document.querySelectorAll('.nav-left a, .nav-right a').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
-        // Close on Escape key
+        // Close on Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeMenu();
         });
 
-        // Close if user clicks outside (on the overlay)
-        document.addEventListener('click', (e) => {
-            if (!newBtn.classList.contains('active')) return;
-            const clickedInsideNav = e.target.closest('.nav-left, .nav-right, .menu-toggle');
-            if (!clickedInsideNav) closeMenu();
-        });
-
-        // Close menu if viewport is resized to desktop width
+        // Auto-close on desktop resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && newBtn.classList.contains('active')) {
+            if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
                 closeMenu();
             }
         });
-
-        // Expose for debugging
-        window.__toggleMenu = { openMenu, closeMenu };
     }
 
     /* ============================================
-       8. CART SYSTEM (localStorage)
+       8. CART
        ============================================ */
     function getCart() {
         try {
@@ -239,8 +226,7 @@
     function updateCartCount() {
         const cart = getCart();
         const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
-        const badges = document.querySelectorAll('#cart-count');
-        badges.forEach(badge => {
+        document.querySelectorAll('#cart-count').forEach(badge => {
             badge.textContent = count;
             badge.classList.add('bump');
             setTimeout(() => badge.classList.remove('bump'), 400);
@@ -521,9 +507,7 @@
 
         console.log('✅ Walk \'N\' Talk initialized.');
         console.log('📍 Page:', window.location.pathname);
-        console.log('🛒 Cart items:', getCart().length);
-        console.log('📐 Window width:', window.innerWidth + 'px', window.innerWidth <= 768 ? '(mobile)' : '(desktop)');
-        console.log('🍔 Hamburger visible:', window.innerWidth <= 768 ? 'YES' : 'NO (resize to see)');
+        console.log('📐 Width:', window.innerWidth + 'px');
     }
 
     if (document.readyState === 'loading') {
